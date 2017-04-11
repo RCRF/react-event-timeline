@@ -48,10 +48,8 @@ let style = {
     width: 32,
     height: 32,
     position: 'relative',
-    left: '50%',
-    top: '50%',
-    marginLeft: -8,
-    marginTop: -8
+    left: '12.5%',
+    top: '12.5%'
   },
   eventContainer: {
     position: 'relative'
