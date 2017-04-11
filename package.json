@@ -1,6 +1,7 @@
 {
   "name": "react-event-timeline",
   "description": "A responsive event timeline in React.js",
+  "version": "0.0.0",
   "main": "dist/index.js",
   "jsnext:main": "components/index.js",
   "module": "components/index.js",
