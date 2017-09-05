@@ -66,7 +66,6 @@ var style = {
     borderLeftColor: '#ffffff'
   },
   time: {
-    color: '#303e49',
     marginBottom: 3
   },
   message: {
@@ -101,8 +100,13 @@ var style = {
     backgroundColor: '#ffffff',
     marginBottom: '1em',
     lineHeight: 1.6,
-    padding: '1.5em 1em',
+    padding: 10,
     minHeight: 40
+  },
+  blipStyle: {
+    position: 'absolute',
+    top: '50%',
+    marginTop: '9px'
   }
 };
 

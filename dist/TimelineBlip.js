@@ -30,45 +30,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var TimelineEvent = function (_Component) {
-  _inherits(TimelineEvent, _Component);
+var TimelineBlip = function (_Component) {
+  _inherits(TimelineBlip, _Component);
 
-  function TimelineEvent() {
-    _classCallCheck(this, TimelineEvent);
+  function TimelineBlip() {
+    _classCallCheck(this, TimelineBlip);
 
-    return _possibleConstructorReturn(this, (TimelineEvent.__proto__ || Object.getPrototypeOf(TimelineEvent)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (TimelineBlip.__proto__ || Object.getPrototypeOf(TimelineBlip)).apply(this, arguments));
   }
 
-  _createClass(TimelineEvent, [{
+  _createClass(TimelineBlip, [{
     key: 'mergeNotificationStyle',
     value: function mergeNotificationStyle(iconColor) {
       return iconColor ? _extends({}, _styles2.default.eventType, { color: iconColor, borderColor: iconColor }) : _styles2.default.eventType;
-    }
-  }, {
-    key: 'mergeContentStyle',
-    value: function mergeContentStyle(contentStyle) {
-      var messageStyle = this.showAsCard() ? _styles2.default.cardBody : _styles2.default.message;
-      return contentStyle ? _extends({}, messageStyle, contentStyle) : messageStyle;
-    }
-  }, {
-    key: 'timeStyle',
-    value: function timeStyle() {
-      return this.showAsCard() ? _styles2.default.time : _extends({}, _styles2.default.time, { color: '#303e49' });
-    }
-  }, {
-    key: 'showAsCard',
-    value: function showAsCard() {
-      var container = this.props.container;
-
-      return container === 'card';
-    }
-  }, {
-    key: 'containerStyle',
-    value: function containerStyle() {
-      var style = this.props.style;
-
-      var containerStyle = _extends({}, _styles2.default.eventContainer, style);
-      return this.showAsCard() ? _extends({}, containerStyle, _styles2.default.card) : containerStyle;
     }
   }, {
     key: 'iconStyle',
@@ -79,20 +53,15 @@ var TimelineEvent = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
-          createdAt = _props.createdAt,
           title = _props.title,
-          contentStyle = _props.contentStyle,
           iconStyle = _props.iconStyle,
-          buttons = _props.buttons,
           icon = _props.icon,
           iconColor = _props.iconColor,
-          container = _props.container,
-          cardHeaderStyle = _props.cardHeaderStyle,
-          otherProps = _objectWithoutProperties(_props, ['createdAt', 'title', 'contentStyle', 'iconStyle', 'buttons', 'icon', 'iconColor', 'container', 'cardHeaderStyle']);
+          otherProps = _objectWithoutProperties(_props, ['title', 'iconStyle', 'icon', 'iconColor']);
 
       return _react2.default.createElement(
         'div',
-        { style: _styles2.default.event },
+        { style: _extends({}, _styles2.default.event, { marginBottom: 50 }) },
         _react2.default.createElement(
           'div',
           { style: this.mergeNotificationStyle(iconColor) },
@@ -104,32 +73,11 @@ var TimelineEvent = function (_Component) {
         ),
         _react2.default.createElement(
           'div',
-          _extends({}, otherProps, { style: this.containerStyle() }),
-          _react2.default.createElement('div', { style: _styles2.default.eventContainerBefore }),
+          _extends({}, otherProps, { style: _styles2.default.blipStyle }),
           _react2.default.createElement(
             'div',
-            { style: container === 'card' ? _extends({}, _styles2.default.cardTitle, cardHeaderStyle) : {} },
-            _react2.default.createElement(
-              'div',
-              { style: this.timeStyle() },
-              createdAt
-            ),
-            _react2.default.createElement(
-              'div',
-              null,
-              title
-            ),
-            _react2.default.createElement(
-              'div',
-              { style: _styles2.default.actionButtons },
-              buttons
-            )
-          ),
-          this.props.children && _react2.default.createElement(
-            'div',
-            { style: this.mergeContentStyle(contentStyle) },
-            this.props.children,
-            _react2.default.createElement('div', { style: _styles2.default.messageAfter })
+            null,
+            title
           )
         ),
         _react2.default.createElement('div', { style: _styles2.default.eventAfter })
@@ -137,29 +85,20 @@ var TimelineEvent = function (_Component) {
     }
   }]);
 
-  return TimelineEvent;
+  return TimelineBlip;
 }(_react.Component);
 
-TimelineEvent.propTypes = {
+TimelineBlip.propTypes = {
   title: _propTypes2.default.node.isRequired,
-  createdAt: _propTypes2.default.node.isRequired,
-  children: _propTypes2.default.node,
-  buttons: _propTypes2.default.node,
-  container: _propTypes2.default.string,
   icon: _propTypes2.default.node,
   iconColor: _propTypes2.default.string,
   iconStyle: _propTypes2.default.object,
-  contentStyle: _propTypes2.default.object,
-  cardHeaderStyle: _propTypes2.default.object,
   style: _propTypes2.default.object
 };
 
-TimelineEvent.defaultProps = {
-  createdAt: undefined,
+TimelineBlip.defaultProps = {
   iconStyle: {},
-  contentStyle: {},
-  cardHeaderStyle: {},
   style: {}
 };
 
-exports.default = TimelineEvent;
+exports.default = TimelineBlip;
